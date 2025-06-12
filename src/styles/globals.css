@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for Spark: Digital Couples Connection Game */
+
+/* Base styles */
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-primary-50 via-white to-romantic-pink/10;
+    @apply min-h-screen;
+    @apply overflow-x-hidden;
+  }
+  
+  * {
+    @apply antialiased;
+  }
+}
+
+/* Component styles */
+@layer components {
+  /* Card styles */
+  .card {
+    @apply bg-white/90 backdrop-blur-sm border border-primary-100;
+    @apply rounded-2xl shadow-lg hover:shadow-xl;
+    @apply transition-all duration-300 ease-in-out;
+    @apply cursor-pointer;
+  }
+  
+  .card:hover {
+    @apply scale-105 shadow-2xl border-primary-200;
+  }
+  
+  .card-front {
+    @apply bg-gradient-to-br from-romantic-pink to-romantic-purple;
+    @apply text-white;
+  }
+  
+  .card-back {
+    @apply bg-gradient-to-br from-primary-500 to-romantic-red;
+    @apply text-white;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-gradient-to-r from-romantic-pink to-romantic-purple;
+    @apply text-white font-semibold px-6 py-3 rounded-full;
+    @apply hover:from-romantic-purple hover:to-romantic-red;
+    @apply transition-all duration-300 ease-in-out;
+    @apply shadow-lg hover:shadow-xl;
+    @apply transform hover:scale-105;
+  }
+  
+  .btn-secondary {
+    @apply bg-white/20 backdrop-blur-sm border border-white/30;
+    @apply text-primary-700 font-semibold px-6 py-3 rounded-full;
+    @apply hover:bg-white/30 hover:border-white/50;
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  /* Game interface styles */
+  .game-container {
+    @apply max-w-lg mx-auto px-4 py-6;
+    @apply min-h-screen flex flex-col;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-primary-100 rounded-full h-3;
+    @apply overflow-hidden shadow-inner;
+  }
+  
+  .progress-fill {
+    @apply bg-gradient-to-r from-romantic-pink to-romantic-purple;
+    @apply h-full rounded-full transition-all duration-500 ease-out;
+    @apply shadow-sm;
+  }
+  
+  /* Heart animation */
+  .heart {
+    @apply text-romantic-red;
+    animation: heartBeat 1.5s ease-in-out infinite;
+  }
+  
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-6 h-6 border-2 border-white/30;
+    @apply border-t-white rounded-full;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* Card flip animation */
+  .card-flip-container {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .card-flip {
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+  }
+  
+  .card-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  .card-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  
+  .card-face-back {
+    transform: rotateY(180deg);
+  }
+}
+
+/* Utility styles */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-romantic-pink to-romantic-purple;
+    @apply bg-clip-text text-transparent;
+  }
+  
+  .bg-romantic-gradient {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #ee5a52 100%);
+  }
+  
+  .glassmorphism {
+    @apply bg-white/20 backdrop-blur-lg border border-white/30;
+  }
+  
+  .card-shadow {
+    box-shadow: 0 10px 25px -3px rgba(236, 72, 153, 0.1), 
+                0 4px 6px -2px rgba(236, 72, 153, 0.05);
+  }
+}
+
+/* Animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+  .card {
+    @apply mx-2;
+  }
+  
+  .game-container {
+    @apply px-3 py-4;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .card {
+    @apply bg-secondary-800/90 border-secondary-700;
+  }
+} 
